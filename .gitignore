@@ -1,3 +1,4 @@
+	Main
 # Prerequisites
 *.d
 
@@ -30,3 +31,23 @@
 *.exe
 *.out
 *.app
+
+
+
+	Assignment1
+
+build/
+
+ascii85
+ascii85_test
+
+encoded.txt
+
+.vscode/
+.idea/
+
+CMakeCache.txt
+cmake_install.cmake
+CMakeFiles/
+CTestTestfile.cmake
+Testing/ 
