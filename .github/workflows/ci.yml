@@ -22,15 +22,15 @@ jobs:
           sudo apt-get install -y build-essential cmake libgtest-dev googletest
 
       - name: Configure with CMake
-        working-directory: ${{ github.workspace }} 
+        working-directory: ${{ github.workspace }}/Assignment1
         run: cmake -B build -S . -DUSE_SYSTEM_GTEST=ON
 
       - name: Build project
-        working-directory: ${{ github.workspace }} 
+        working-directory: ${{ github.workspace }}/Assignment1 
         run: cmake --build build --config Release
 
       - name: Run tests
-        working-directory: ${{ github.workspace }} 
+        working-directory: ${{ github.workspace }}/Assignment1/build
         run: |
           cd build
           ctest --output-on-failure
