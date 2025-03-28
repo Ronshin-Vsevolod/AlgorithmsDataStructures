@@ -21,6 +21,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential cmake libgtest-dev googletest
 
+      - name: Create build directory
+        working-directory: ${{ github.workspace }}/Assignment1
+        run: mkdir -p build
+
       - name: Configure with CMake
         working-directory: ${{ github.workspace }}/Assignment1
         run: cmake -B build -S . -DUSE_SYSTEM_GTEST=ON
