@@ -1,0 +1,33 @@
+name: C++ CI with CMake and Google Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake libgtest-dev googletest
+
+      - name: Configure with CMake
+        run: cmake -B build -S . -DUSE_SYSTEM_GTEST=ON
+
+      - name: Build project
+        run: cmake --build build --config Release
+
+      - name: Run tests
+        run: |
+          cd build
+          ctest --output-on-failure
