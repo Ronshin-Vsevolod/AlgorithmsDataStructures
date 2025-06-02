@@ -46,3 +46,20 @@ jobs:
         cmake --build . --config Release
         
         ctest --output-on-failure
+
+  build-assignment3:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential g++ libgtest-dev
+
+    - name: Build and Test
+      working-directory: ${{ github.workspace }}/Assignment3
+      run: |
+        make clean
+        make all
+        make test 
